@@ -21,6 +21,7 @@ class Contract(Base):
     
     alerts = relationship("Alert", back_populates="contract")
     emails = relationship("AlertEmail", back_populates="contract")
+    logs = relationship("Log", back_populates="contract")
 
 class Alert(Base):
     __tablename__ = 'alerts'
@@ -40,4 +41,26 @@ class AlertEmail(Base):
     contract_id = Column(Integer, ForeignKey('contracts.id'))
     email = Column(String(255), nullable=False)
     
-    contract = relationship("Contract", back_populates="emails") 
+    contract = relationship("Contract", back_populates="emails")
+
+class Log(Base):
+    __tablename__ = 'logs'
+    
+    id = Column(Integer, primary_key=True)
+    timestamp = Column(DateTime, default=datetime.utcnow)
+    level = Column(String(20), nullable=False)  # INFO, WARNING, ERROR
+    source = Column(String(50), nullable=False)  # contract_monitor, agent, system
+    message = Column(Text, nullable=False)
+    contract_id = Column(Integer, ForeignKey('contracts.id'), nullable=True)
+    
+    contract = relationship("Contract", back_populates="logs")
+
+class Wallet(Base):
+    __tablename__ = 'wallet'
+    
+    id = Column(Integer, primary_key=True)
+    wallet_id = Column(String(100), nullable=False)
+    seed = Column(String(200), nullable=False)
+    network_id = Column(String(50))
+    default_address_id = Column(String(42))
+    created_at = Column(DateTime, default=datetime.utcnow) 

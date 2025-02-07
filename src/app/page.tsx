@@ -47,6 +47,7 @@ import { Card } from "src/components/ui/card";
 import SignupButton from "src/components/SignupButton";
 import LoginButton from "src/components/LoginButton";
 import { useContractMonitor } from "src/hooks/useContractMonitor";
+import { LogsViewer } from "src/components/LogsViewer";
 
 const formSchema = z.object({
   network: z.string().min(1, "Please select a network"),
@@ -462,104 +463,14 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Tracked Contracts Table */}
-          <Card className="col-span-2 p-6 bg-gray-900/50 border-gray-800 backdrop-blur-sm overflow-hidden">
+          <Card className="col-span-2 p-6 bg-gray-900/50 border-gray-800 backdrop-blur-sm">
             <h2 className="text-xl font-semibold mb-6 text-white">
-              Tracked Contracts
+              Monitoring Logs
             </h2>
-            <div className="overflow-x-auto">
-              <table className="w-full">
-                <thead>
-                  <tr className="border-b border-gray-800">
-                    <th className="text-left py-3 px-4 text-gray-400 font-medium">
-                      Contract Address
-                    </th>
-                    <th className="text-left py-3 px-4 text-gray-400 font-medium">
-                      Network
-                    </th>
-                    <th className="text-left py-3 px-4 text-gray-400 font-medium">
-                      Description
-                    </th>
-                    <th className="text-left py-3 px-4 text-gray-400 font-medium">
-                      Status
-                    </th>
-                    <th className="text-left py-3 px-4 text-gray-400 font-medium">
-                      Threat Level
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {loading ? (
-                    <tr>
-                      <td
-                        colSpan={5}
-                        className="py-8 text-center text-gray-400"
-                      >
-                        Loading contracts...
-                      </td>
-                    </tr>
-                  ) : contracts.length === 0 ? (
-                    <tr>
-                      <td
-                        colSpan={5}
-                        className="py-8 text-center text-gray-400"
-                      >
-                        No contracts being monitored yet
-                      </td>
-                    </tr>
-                  ) : (
-                    contracts.map((contract) => (
-                      <tr
-                        key={contract.id}
-                        className="border-b border-gray-800/50 hover:bg-gray-800/30"
-                      >
-                        <td className="py-3 px-4">
-                          <span className="text-blue-400">
-                            {contract.address}
-                          </span>
-                        </td>
-                        <td className="py-3 px-4">
-                          <span className="px-2 py-1 bg-gray-800 rounded-full text-sm text-gray-300">
-                            {contract.network}
-                          </span>
-                        </td>
-                        <td className="py-3 px-4">
-                          <span className="text-gray-300">
-                            {contract.description || "—"}
-                          </span>
-                        </td>
-                        <td className="py-3 px-4">
-                          <div className="flex items-center gap-2">
-                            {getStatusIcon(contract.status)}
-                            <span className="text-gray-300">
-                              {contract.status}
-                            </span>
-                          </div>
-                        </td>
-                        <td className="py-3 px-4">
-                          <span
-                            className={`px-2 py-1 rounded text-sm ${
-                              contract.threatLevel === "Low"
-                                ? "bg-green-500/20 text-green-400"
-                                : contract.threatLevel === "Medium"
-                                  ? "bg-yellow-500/20 text-yellow-400"
-                                  : "bg-red-500/20 text-red-400"
-                            }`}
-                          >
-                            {contract.threatLevel}
-                          </span>
-                        </td>
-                      </tr>
-                    ))
-                  )}
-                </tbody>
-              </table>
-            </div>
+            <LogsViewer />
           </Card>
 
-          {/* Stats and Info Cards */}
           <div className="space-y-6">
-            {/* Threat Detection Card */}
             <Card className="p-6 bg-gradient-to-br from-red-900/50 to-orange-900/50 border-red-900/50 backdrop-blur-sm">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-lg font-medium text-white flex items-center gap-2">
@@ -591,7 +502,7 @@ export default function Home() {
               </ul>
             </Card>
 
-            {/* Active Monitoring Card */}
+            {/* Active Monitoring Stats */}
             <Card className="p-6 bg-gradient-to-br from-blue-900/50 to-cyan-900/50 border-blue-900/50 backdrop-blur-sm">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-lg font-medium text-white flex items-center gap-2">
@@ -615,19 +526,61 @@ export default function Home() {
               </div>
             </Card>
 
-            {/* Alert Settings Card */}
-            <Card className="p-6 bg-gradient-to-br from-purple-900/50 to-pink-900/50 border-purple-900/50 backdrop-blur-sm">
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-lg font-medium text-white flex items-center gap-2">
-                  <Bell className="w-5 h-5 text-purple-400" />
-                  Alert Settings
-                </h3>
-                <Mail className="text-purple-400" />
+            <Card className="p-6 bg-gray-900/50 border-gray-800 backdrop-blur-sm">
+              <h2 className="text-lg font-medium text-white mb-4">
+                Tracked Contracts
+              </h2>
+              <div className="space-y-3 max-h-[400px] overflow-y-auto">
+                {loading ? (
+                  <div className="text-center text-gray-400 py-4">
+                    Loading contracts...
+                  </div>
+                ) : contracts.length === 0 ? (
+                  <div className="text-center text-gray-400 py-4">
+                    No contracts being monitored yet
+                  </div>
+                ) : (
+                  contracts.map((contract) => (
+                    <div
+                      key={contract.id}
+                      className="p-3 bg-black/30 rounded-lg border border-gray-800/50 hover:bg-gray-800/30"
+                    >
+                      <div className="flex items-center justify-between mb-2">
+                        <span className="text-sm text-blue-400">
+                          {contract.address}
+                        </span>
+                        <span className="px-2 py-1 bg-gray-800 rounded-full text-xs text-gray-300">
+                          {contract.network}
+                        </span>
+                      </div>
+                      {contract.description && (
+                        <p className="text-sm text-gray-400 mb-2">
+                          {contract.description}
+                        </p>
+                      )}
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2">
+                          {getStatusIcon(contract.status)}
+                          <span className="text-sm text-gray-300">
+                            {contract.status}
+                          </span>
+                        </div>
+                        <span
+                          className={`px-2 py-1 rounded text-xs ${
+                            contract.threatLevel === "Low"
+                              ? "bg-green-500/20 text-green-400"
+                              : contract.threatLevel === "Medium"
+                                ? "bg-yellow-500/20 text-yellow-400"
+                                : "bg-red-500/20 text-red-400"
+                          }`}
+                        >
+                          {contract.threatLevel}
+                        </span>
+                      </div>
+                    </div>
+                  ))
+                )}
               </div>
-              <p className="text-sm text-gray-300">
-                Email notifications configured for immediate alerts on
-                suspicious activities.
-              </p>
             </Card>
           </div>
         </div>
