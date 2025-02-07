@@ -46,6 +46,7 @@ import {
 import { Card } from "src/components/ui/card";
 import SignupButton from "src/components/SignupButton";
 import LoginButton from "src/components/LoginButton";
+import { useContractMonitor } from "src/hooks/useContractMonitor";
 
 const formSchema = z.object({
   network: z.string().min(1, "Please select a network"),
@@ -57,37 +58,17 @@ const formSchema = z.object({
   emails: z
     .array(z.string().email("Invalid email format"))
     .min(1, "At least one email is required"),
+  description: z.string().optional(),
+  alertThreshold: z.enum(["Low", "Medium", "High"]).default("Medium"),
+  monitoringFrequency: z
+    .enum(["1min", "5min", "15min", "30min", "1hour"])
+    .default("5min"),
 });
 
 const networks = [
   { id: "ethereum", name: "Ethereum Mainnet" },
   { id: "base", name: "Base Mainnet" },
   { id: "base-sepolia", name: "Base Sepolia" },
-];
-
-// mock data
-const trackedContracts = [
-  {
-    id: 1,
-    address: "0x1234...5678",
-    status: "Healthy",
-    threatLevel: "Low",
-    network: "ethereum",
-  },
-  {
-    id: 2,
-    address: "0xabcd...efgh",
-    status: "Warning",
-    threatLevel: "Medium",
-    network: "ethereum",
-  },
-  {
-    id: 3,
-    address: "0x9876...5432",
-    status: "Critical",
-    threatLevel: "High",
-    network: "ethereum",
-  },
 ];
 
 const getThreatLevelColor = (level: string) => {
@@ -120,6 +101,17 @@ export default function Home() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const { toast } = useToast();
   const { address } = useAccount();
+
+  const {
+    contracts,
+    stats,
+    alertSettings,
+    loading,
+    error,
+    addContract,
+    refreshData,
+  } = useContractMonitor();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -127,16 +119,30 @@ export default function Home() {
       contractAddress: "",
       emergencyFunction: "",
       emails: [""],
+      description: "",
+      alertThreshold: "Medium",
+      monitoringFrequency: "5min",
     },
   });
 
-  const onSubmit = (values: z.infer<typeof formSchema>) => {
-    toast({
-      title: "Contract Monitoring Added",
-      description: "We'll start monitoring this contract for security threats.",
-    });
-    setIsDialogOpen(false);
-    form.reset();
+  const onSubmit = async (values: z.infer<typeof formSchema>) => {
+    try {
+      await addContract(values);
+      toast({
+        title: "Contract Monitoring Added",
+        description:
+          "We'll start monitoring this contract for security threats.",
+      });
+      setIsDialogOpen(false);
+      form.reset();
+      await refreshData(); // refresh all data
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to add contract for monitoring.",
+        variant: "destructive",
+      });
+    }
   };
 
   const addEmailField = () => {
@@ -209,15 +215,16 @@ export default function Home() {
                               defaultValue={field.value}
                             >
                               <FormControl>
-                                <SelectTrigger className="bg-gray-800/50 border-gray-700">
+                                <SelectTrigger className="bg-gray-800/50 border-gray-700 text-white">
                                   <SelectValue placeholder="Select network" />
                                 </SelectTrigger>
                               </FormControl>
-                              <SelectContent>
+                              <SelectContent className="bg-gray-800 border-gray-700">
                                 {networks.map((network) => (
                                   <SelectItem
                                     key={network.id}
                                     value={network.id}
+                                    className="text-white hover:bg-gray-700 focus:bg-gray-700"
                                   >
                                     {network.name}
                                   </SelectItem>
@@ -241,7 +248,27 @@ export default function Home() {
                               <Input
                                 {...field}
                                 placeholder="0x..."
-                                className="bg-gray-800/50 border-gray-700"
+                                className="bg-gray-800/50 border-gray-700 text-white placeholder:text-gray-500"
+                              />
+                            </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+
+                      <FormField
+                        control={form.control}
+                        name="description"
+                        render={({ field }: any) => (
+                          <FormItem>
+                            <FormLabel className="text-gray-300">
+                              Description (Optional)
+                            </FormLabel>
+                            <FormControl>
+                              <Input
+                                {...field}
+                                placeholder="Brief description of the contract"
+                                className="bg-gray-800/50 border-gray-700 text-white placeholder:text-gray-500"
                               />
                             </FormControl>
                             <FormMessage />
@@ -261,9 +288,107 @@ export default function Home() {
                               <Input
                                 {...field}
                                 placeholder="pause()"
-                                className="bg-gray-800/50 border-gray-700"
+                                className="bg-gray-800/50 border-gray-700 text-white placeholder:text-gray-500"
                               />
                             </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+
+                      <FormField
+                        control={form.control}
+                        name="alertThreshold"
+                        render={({ field }: any) => (
+                          <FormItem>
+                            <FormLabel className="text-gray-300">
+                              Alert Threshold
+                            </FormLabel>
+                            <Select
+                              onValueChange={field.onChange}
+                              defaultValue={field.value}
+                            >
+                              <FormControl>
+                                <SelectTrigger className="bg-gray-800/50 border-gray-700 text-white">
+                                  <SelectValue placeholder="Select threshold" />
+                                </SelectTrigger>
+                              </FormControl>
+                              <SelectContent className="bg-gray-800 border-gray-700">
+                                <SelectItem
+                                  value="Low"
+                                  className="text-white hover:bg-gray-700 focus:bg-gray-700"
+                                >
+                                  Low
+                                </SelectItem>
+                                <SelectItem
+                                  value="Medium"
+                                  className="text-white hover:bg-gray-700 focus:bg-gray-700"
+                                >
+                                  Medium
+                                </SelectItem>
+                                <SelectItem
+                                  value="High"
+                                  className="text-white hover:bg-gray-700 focus:bg-gray-700"
+                                >
+                                  High
+                                </SelectItem>
+                              </SelectContent>
+                            </Select>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+
+                      <FormField
+                        control={form.control}
+                        name="monitoringFrequency"
+                        render={({ field }: any) => (
+                          <FormItem>
+                            <FormLabel className="text-gray-300">
+                              Monitoring Frequency
+                            </FormLabel>
+                            <Select
+                              onValueChange={field.onChange}
+                              defaultValue={field.value}
+                            >
+                              <FormControl>
+                                <SelectTrigger className="bg-gray-800/50 border-gray-700 text-white">
+                                  <SelectValue placeholder="Select frequency" />
+                                </SelectTrigger>
+                              </FormControl>
+                              <SelectContent className="bg-gray-800 border-gray-700">
+                                <SelectItem
+                                  value="1min"
+                                  className="text-white hover:bg-gray-700 focus:bg-gray-700"
+                                >
+                                  Every minute
+                                </SelectItem>
+                                <SelectItem
+                                  value="5min"
+                                  className="text-white hover:bg-gray-700 focus:bg-gray-700"
+                                >
+                                  Every 5 minutes
+                                </SelectItem>
+                                <SelectItem
+                                  value="15min"
+                                  className="text-white hover:bg-gray-700 focus:bg-gray-700"
+                                >
+                                  Every 15 minutes
+                                </SelectItem>
+                                <SelectItem
+                                  value="30min"
+                                  className="text-white hover:bg-gray-700 focus:bg-gray-700"
+                                >
+                                  Every 30 minutes
+                                </SelectItem>
+                                <SelectItem
+                                  value="1hour"
+                                  className="text-white hover:bg-gray-700 focus:bg-gray-700"
+                                >
+                                  Every hour
+                                </SelectItem>
+                              </SelectContent>
+                            </Select>
                             <FormMessage />
                           </FormItem>
                         )}
@@ -281,13 +406,29 @@ export default function Home() {
                                   ? "Alert Email"
                                   : `Additional Email ${index + 1}`}
                               </FormLabel>
-                              <FormControl>
-                                <Input
-                                  {...field}
-                                  placeholder="security@example.com"
-                                  className="bg-gray-800/50 border-gray-700"
-                                />
-                              </FormControl>
+                              <div className="flex gap-2">
+                                <FormControl>
+                                  <Input
+                                    {...field}
+                                    placeholder="security@example.com"
+                                    className="bg-gray-800/50 border-gray-700 text-white placeholder:text-gray-500"
+                                  />
+                                </FormControl>
+                                {index > 0 && (
+                                  <Button
+                                    type="button"
+                                    variant="destructive"
+                                    className="px-3"
+                                    onClick={() => {
+                                      const emails = form.getValues("emails");
+                                      emails.splice(index, 1);
+                                      form.setValue("emails", [...emails]);
+                                    }}
+                                  >
+                                    <X className="h-4 w-4" />
+                                  </Button>
+                                )}
+                              </div>
                               <FormMessage />
                             </FormItem>
                           )}
@@ -324,7 +465,7 @@ export default function Home() {
           {/* Tracked Contracts Table */}
           <Card className="col-span-2 p-6 bg-gray-900/50 border-gray-800 backdrop-blur-sm overflow-hidden">
             <h2 className="text-xl font-semibold mb-6 text-white">
-              Tracked Contracts on Ethereum
+              Tracked Contracts
             </h2>
             <div className="overflow-x-auto">
               <table className="w-full">
@@ -332,6 +473,12 @@ export default function Home() {
                   <tr className="border-b border-gray-800">
                     <th className="text-left py-3 px-4 text-gray-400 font-medium">
                       Contract Address
+                    </th>
+                    <th className="text-left py-3 px-4 text-gray-400 font-medium">
+                      Network
+                    </th>
+                    <th className="text-left py-3 px-4 text-gray-400 font-medium">
+                      Description
                     </th>
                     <th className="text-left py-3 px-4 text-gray-400 font-medium">
                       Status
@@ -342,33 +489,69 @@ export default function Home() {
                   </tr>
                 </thead>
                 <tbody>
-                  {trackedContracts.map((contract) => (
-                    <tr
-                      key={contract.id}
-                      className="border-b border-gray-800/50 hover:bg-gray-800/30"
-                    >
-                      <td className="py-3 px-4">
-                        <span className="text-blue-400">
-                          {contract.address}
-                        </span>
-                      </td>
-                      <td className="py-3 px-4">
-                        <div className="flex items-center gap-2">
-                          {getStatusIcon(contract.status)}
-                          <span className="text-gray-300">
-                            {contract.status}
-                          </span>
-                        </div>
-                      </td>
-                      <td className="py-3 px-4">
-                        <span
-                          className={getThreatLevelColor(contract.threatLevel)}
-                        >
-                          {contract.threatLevel}
-                        </span>
+                  {loading ? (
+                    <tr>
+                      <td
+                        colSpan={5}
+                        className="py-8 text-center text-gray-400"
+                      >
+                        Loading contracts...
                       </td>
                     </tr>
-                  ))}
+                  ) : contracts.length === 0 ? (
+                    <tr>
+                      <td
+                        colSpan={5}
+                        className="py-8 text-center text-gray-400"
+                      >
+                        No contracts being monitored yet
+                      </td>
+                    </tr>
+                  ) : (
+                    contracts.map((contract) => (
+                      <tr
+                        key={contract.id}
+                        className="border-b border-gray-800/50 hover:bg-gray-800/30"
+                      >
+                        <td className="py-3 px-4">
+                          <span className="text-blue-400">
+                            {contract.address}
+                          </span>
+                        </td>
+                        <td className="py-3 px-4">
+                          <span className="px-2 py-1 bg-gray-800 rounded-full text-sm text-gray-300">
+                            {contract.network}
+                          </span>
+                        </td>
+                        <td className="py-3 px-4">
+                          <span className="text-gray-300">
+                            {contract.description || "—"}
+                          </span>
+                        </td>
+                        <td className="py-3 px-4">
+                          <div className="flex items-center gap-2">
+                            {getStatusIcon(contract.status)}
+                            <span className="text-gray-300">
+                              {contract.status}
+                            </span>
+                          </div>
+                        </td>
+                        <td className="py-3 px-4">
+                          <span
+                            className={`px-2 py-1 rounded text-sm ${
+                              contract.threatLevel === "Low"
+                                ? "bg-green-500/20 text-green-400"
+                                : contract.threatLevel === "Medium"
+                                  ? "bg-yellow-500/20 text-yellow-400"
+                                  : "bg-red-500/20 text-red-400"
+                            }`}
+                          >
+                            {contract.threatLevel}
+                          </span>
+                        </td>
+                      </tr>
+                    ))
+                  )}
                 </tbody>
               </table>
             </div>
@@ -419,11 +602,15 @@ export default function Home() {
               <div className="grid grid-cols-2 gap-4">
                 <div className="p-4 bg-black/30 rounded-lg">
                   <p className="text-sm text-gray-400">Contracts Monitored</p>
-                  <p className="text-2xl font-bold text-white mt-1">3</p>
+                  <p className="text-2xl font-bold text-white mt-1">
+                    {stats?.contractsMonitored || 0}
+                  </p>
                 </div>
                 <div className="p-4 bg-black/30 rounded-lg">
                   <p className="text-sm text-gray-400">Alerts Today</p>
-                  <p className="text-2xl font-bold text-white mt-1">2</p>
+                  <p className="text-2xl font-bold text-white mt-1">
+                    {stats?.alertsToday || 0}
+                  </p>
                 </div>
               </div>
             </Card>

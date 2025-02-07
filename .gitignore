@@ -33,3 +33,9 @@ yarn-error.log*
 next-env.d.ts
 
 .env
+
+venv/
+__pycache__/
+*.pyc
+.env
+*.db

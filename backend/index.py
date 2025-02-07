@@ -78,11 +78,14 @@ def add_contract():
     try:
         data = request.json
         with Session() as session:
-            # Create new contract
+            # Create new contract with additional fields
             contract = Contract(
                 address=data['contractAddress'],
                 network=data['network'],
-                emergency_function=data['emergencyFunction']
+                emergency_function=data['emergencyFunction'],
+                description=data.get('description'),  # Optional field
+                alert_threshold=data.get('alertThreshold', 'Medium'),
+                monitoring_frequency=data.get('monitoringFrequency', '5min')
             )
             session.add(contract)
             session.flush()  # get the contract id
@@ -97,7 +100,7 @@ def add_contract():
             
             session.commit()
             
-            # Start monitoring
+            # Start monitoring with new frequency
             contract_monitor.start_monitoring(contract.id)
             
             return jsonify({
