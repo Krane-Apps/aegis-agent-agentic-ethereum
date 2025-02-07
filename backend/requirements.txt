@@ -1,0 +1,9 @@
+flask
+flask-cors
+python-dotenv
+sqlalchemy
+web3
+requests
+langchain_openai
+langgraph
+cdp_langchain
