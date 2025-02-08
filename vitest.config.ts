@@ -12,6 +12,7 @@ export default defineConfig({
         '.next/**',
         'public/**',
         'node_modules/**',
+        'subgraph-transaction/**',
       ],
       reportOnFailure: true,
       thresholds: {
@@ -22,7 +23,7 @@ export default defineConfig({
       },
     },
     environment: 'jsdom',
-    exclude: ['**/node_modules/**', '.next/**', 'public/**'],
+    exclude: ['**/node_modules/**', '.next/**', 'public/**', 'subgraph-transaction/**'],
     setupFiles: ['./vitest.setup.ts'],
     globals: true,
   },
