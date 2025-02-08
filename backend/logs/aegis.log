@@ -1,0 +1,415 @@
+2025-02-08 02:44:28,429 [INFO] monitoring.contract_monitor: Contract monitor initialized
+2025-02-08 02:44:28,456 [ERROR] db.wallet: Failed to retrieve wallet info: no such table: wallet
+2025-02-08 02:44:30,290 [ERROR] db.wallet: Database error occurred: no such table: wallet
+2025-02-08 02:44:30,358 [WARNING] werkzeug:  * Debugger is active!
+2025-02-08 02:44:30,370 [INFO] werkzeug:  * Debugger PIN: 540-300-446
+2025-02-08 02:44:42,778 [INFO] monitoring.contract_monitor: Contract monitor initialized
+2025-02-08 02:44:42,807 [ERROR] db.wallet: Failed to retrieve wallet info: no such table: wallet
+2025-02-08 02:44:44,628 [ERROR] db.wallet: Database error occurred: no such table: wallet
+2025-02-08 02:44:44,711 [INFO] werkzeug: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-08 02:44:44,711 [INFO] werkzeug: [33mPress CTRL+C to quit[0m
+2025-02-08 02:44:44,711 [INFO] werkzeug:  * Restarting with stat
+2025-02-08 02:44:45,982 [INFO] monitoring.contract_monitor: Contract monitor initialized
+2025-02-08 02:44:46,005 [ERROR] db.wallet: Failed to retrieve wallet info: no such table: wallet
+2025-02-08 02:44:48,622 [ERROR] db.wallet: Database error occurred: no such table: wallet
+2025-02-08 02:44:48,687 [WARNING] werkzeug:  * Debugger is active!
+2025-02-08 02:44:48,693 [INFO] werkzeug:  * Debugger PIN: 540-300-446
+2025-02-08 02:45:10,607 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:45:10] "GET /api/alerts/settings HTTP/1.1" 200 -
+2025-02-08 02:45:10,608 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:45:10] "GET /api/contracts HTTP/1.1" 200 -
+2025-02-08 02:45:10,613 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:45:10] "GET /api/stats HTTP/1.1" 200 -
+2025-02-08 02:45:10,621 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:45:10] "GET /api/contracts HTTP/1.1" 200 -
+2025-02-08 02:45:10,622 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:45:10] "GET /api/alerts/settings HTTP/1.1" 200 -
+2025-02-08 02:45:10,629 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:45:10] "GET /api/stats HTTP/1.1" 200 -
+2025-02-08 02:47:35,753 [INFO] werkzeug:  * Detected change in '/Users/bluntbrain/Documents/code/agentic_ethereum/aegis-agent-agentic-ethereum/backend/db/models.py', reloading
+2025-02-08 02:47:36,134 [INFO] werkzeug:  * Restarting with stat
+2025-02-08 02:48:32,574 [INFO] monitoring.contract_monitor: Contract monitor initialized
+2025-02-08 02:48:32,610 [ERROR] db.wallet: Failed to retrieve wallet info: no such column: info
+2025-02-08 02:48:35,272 [ERROR] db.wallet: Database error occurred: table wallet has no column named info
+2025-02-08 02:48:35,383 [INFO] werkzeug: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-08 02:48:35,385 [INFO] werkzeug: [33mPress CTRL+C to quit[0m
+2025-02-08 02:48:35,386 [INFO] werkzeug:  * Restarting with stat
+2025-02-08 02:48:36,556 [INFO] monitoring.contract_monitor: Contract monitor initialized
+2025-02-08 02:48:36,582 [ERROR] db.wallet: Failed to retrieve wallet info: no such column: info
+2025-02-08 02:48:38,407 [ERROR] db.wallet: Database error occurred: table wallet has no column named info
+2025-02-08 02:48:38,475 [WARNING] werkzeug:  * Debugger is active!
+2025-02-08 02:48:38,486 [INFO] werkzeug:  * Debugger PIN: 540-300-446
+2025-02-08 02:48:38,522 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:48:38] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:48:42,482 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:48:42] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:48:47,697 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:48:47] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:48:47,708 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:48:47] "GET /api/contracts HTTP/1.1" 200 -
+2025-02-08 02:48:47,711 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:48:47] "GET /api/alerts/settings HTTP/1.1" 200 -
+2025-02-08 02:48:47,731 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:48:47] "GET /api/stats HTTP/1.1" 200 -
+2025-02-08 02:48:47,743 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:48:47] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:48:47,744 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:48:47] "GET /api/contracts HTTP/1.1" 200 -
+2025-02-08 02:48:47,748 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:48:47] "GET /api/alerts/settings HTTP/1.1" 200 -
+2025-02-08 02:48:47,763 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:48:47] "GET /api/stats HTTP/1.1" 200 -
+2025-02-08 02:48:52,703 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:48:52] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:48:57,697 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:48:57] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:49:02,698 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:49:02] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:49:07,702 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:49:07] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:49:12,702 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:49:12] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:49:17,697 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:49:17] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:49:22,703 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:49:22] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:49:27,703 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:49:27] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:49:32,702 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:49:32] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:49:34,454 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:49:34] "GET /api/contracts HTTP/1.1" 200 -
+2025-02-08 02:49:34,458 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:49:34] "GET /api/alerts/settings HTTP/1.1" 200 -
+2025-02-08 02:49:34,458 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:49:34] "GET /api/stats HTTP/1.1" 200 -
+2025-02-08 02:49:34,459 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:49:34] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:49:34,477 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:49:34] "GET /api/contracts HTTP/1.1" 200 -
+2025-02-08 02:49:34,506 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:49:34] "GET /api/stats HTTP/1.1" 200 -
+2025-02-08 02:49:34,507 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:49:34] "GET /api/alerts/settings HTTP/1.1" 200 -
+2025-02-08 02:49:34,515 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:49:34] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:49:39,460 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:49:39] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:49:44,459 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:49:44] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:49:49,463 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:49:49] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:49:54,458 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:49:54] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:49:59,464 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:49:59] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:50:04,457 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:50:04] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:50:09,458 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:50:09] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:50:14,459 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:50:14] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:50:19,456 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:50:19] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:50:24,458 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:50:24] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:50:29,458 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:50:29] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:50:34,457 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:50:34] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:50:39,464 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:50:39] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:50:44,463 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:50:44] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:50:49,461 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:50:49] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:50:54,456 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:50:54] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:50:59,462 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:50:59] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:51:04,462 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:51:04] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:51:09,458 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:51:09] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:51:14,456 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:51:14] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:51:19,457 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:51:19] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:51:24,457 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:51:24] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:51:29,457 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:51:29] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:51:34,461 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:51:34] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:51:39,456 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:51:39] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:51:44,462 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:51:44] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:51:49,457 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:51:49] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:51:54,463 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:51:54] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:51:59,459 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:51:59] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:51:59,755 [INFO] werkzeug:  * Detected change in '/Users/bluntbrain/Documents/code/agentic_ethereum/aegis-agent-agentic-ethereum/backend/monitoring/contract_monitor.py', reloading
+2025-02-08 02:52:00,013 [INFO] werkzeug:  * Restarting with stat
+2025-02-08 02:52:01,612 [INFO] monitoring.contract_monitor: Contract monitor initialized
+2025-02-08 02:52:01,643 [ERROR] db.wallet: Failed to retrieve wallet info: no such column: info
+2025-02-08 02:52:04,198 [ERROR] db.wallet: Database error occurred: table wallet has no column named info
+2025-02-08 02:52:04,260 [WARNING] werkzeug:  * Debugger is active!
+2025-02-08 02:52:04,269 [INFO] werkzeug:  * Debugger PIN: 540-300-446
+2025-02-08 02:52:07,624 [INFO] monitoring.contract_monitor: Contract monitor initialized
+2025-02-08 02:52:07,652 [ERROR] db.wallet: Failed to retrieve wallet info: no such column: info
+2025-02-08 02:52:09,206 [ERROR] db.wallet: Database error occurred: table wallet has no column named info
+2025-02-08 02:52:09,286 [INFO] werkzeug: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-08 02:52:09,288 [INFO] werkzeug: [33mPress CTRL+C to quit[0m
+2025-02-08 02:52:09,289 [INFO] werkzeug:  * Restarting with stat
+2025-02-08 02:52:10,493 [INFO] monitoring.contract_monitor: Contract monitor initialized
+2025-02-08 02:52:10,519 [ERROR] db.wallet: Failed to retrieve wallet info: no such column: info
+2025-02-08 02:52:12,575 [ERROR] db.wallet: Database error occurred: table wallet has no column named info
+2025-02-08 02:52:12,640 [WARNING] werkzeug:  * Debugger is active!
+2025-02-08 02:52:12,647 [INFO] werkzeug:  * Debugger PIN: 540-300-446
+2025-02-08 02:52:12,678 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:52:12] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:52:14,462 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:52:14] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:52:19,458 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:52:19] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:52:24,457 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:52:24] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:52:29,459 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:52:29] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:52:34,464 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:52:34] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:52:39,459 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:52:39] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:52:44,459 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:52:44] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:52:49,460 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:52:49] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:52:54,457 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:52:54] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:52:59,457 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:52:59] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:53:00,077 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:53:00] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:53:00,081 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:53:00] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:53:05,080 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:53:05] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:53:10,080 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:53:10] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:53:15,082 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:53:15] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:53:20,082 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:53:20] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:53:25,082 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:53:25] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:53:27,079 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:53:27] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:53:27,082 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:53:27] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:53:32,089 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:53:32] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:53:37,085 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:53:37] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:53:42,088 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:53:42] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:53:47,089 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:53:47] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:53:52,088 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:53:52] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:53:57,088 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:53:57] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:54:02,088 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:54:02] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:54:07,085 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:54:07] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:54:12,082 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:54:12] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:54:17,085 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:54:17] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:54:22,082 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:54:22] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:54:27,082 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:54:27] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:54:32,084 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:54:32] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:54:35,615 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:54:35] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:54:35,617 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:54:35] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:54:40,622 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:54:40] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:54:45,617 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:54:45] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:54:50,625 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:54:50] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:54:55,625 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:54:55] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:55:00,624 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:55:00] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:55:05,622 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:55:05] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:55:10,626 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:55:10] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:55:15,622 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:55:15] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:55:20,624 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:55:20] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:55:25,620 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:55:25] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:55:30,623 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:55:30] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:55:35,616 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:55:35] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:55:40,616 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:55:40] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:55:45,622 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:55:45] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:55:50,619 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:55:50] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:55:55,624 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:55:55] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:56:00,622 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:56:00] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:56:05,623 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:56:05] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:56:10,623 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:56:10] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:56:15,617 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:56:15] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:56:20,618 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:56:20] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:56:25,626 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:56:25] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:56:30,619 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:56:30] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:56:35,622 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:56:35] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:56:40,364 [INFO] werkzeug:  * Detected change in '/Users/bluntbrain/Documents/code/agentic_ethereum/aegis-agent-agentic-ethereum/backend/monitoring/contract_monitor.py', reloading
+2025-02-08 02:56:40,786 [INFO] werkzeug:  * Restarting with stat
+2025-02-08 02:56:42,789 [INFO] monitoring.contract_monitor: Contract monitor initialized
+2025-02-08 02:56:42,825 [ERROR] db.wallet: Failed to retrieve wallet info: no such column: info
+2025-02-08 02:56:44,583 [ERROR] db.wallet: Database error occurred: table wallet has no column named info
+2025-02-08 02:56:44,655 [WARNING] werkzeug:  * Debugger is active!
+2025-02-08 02:56:44,666 [INFO] werkzeug:  * Debugger PIN: 540-300-446
+2025-02-08 02:56:44,709 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:56:44] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:56:44,711 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:56:44] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:56:44,712 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:56:44] "GET /api/contracts HTTP/1.1" 200 -
+2025-02-08 02:56:44,715 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:56:44] "GET /api/stats HTTP/1.1" 200 -
+2025-02-08 02:56:44,715 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:56:44] "GET /api/alerts/settings HTTP/1.1" 200 -
+2025-02-08 02:56:44,719 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:56:44] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:56:44,723 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:56:44] "GET /api/contracts HTTP/1.1" 200 -
+2025-02-08 02:56:44,728 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:56:44] "GET /api/alerts/settings HTTP/1.1" 200 -
+2025-02-08 02:56:44,731 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:56:44] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:56:44,731 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:56:44] "GET /api/stats HTTP/1.1" 200 -
+2025-02-08 02:56:46,696 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:56:46] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:56:48,696 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:56:48] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:56:50,701 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:56:50] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:56:52,700 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:56:52] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:56:54,700 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:56:54] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:56:56,698 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:56:56] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:57:00,345 [INFO] monitoring.contract_monitor: Contract monitor initialized
+2025-02-08 02:57:00,381 [ERROR] db.wallet: Failed to retrieve wallet info: no such column: info
+2025-02-08 02:57:03,131 [ERROR] db.wallet: Database error occurred: table wallet has no column named info
+2025-02-08 02:57:03,208 [INFO] werkzeug: [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-02-08 02:57:03,210 [INFO] werkzeug: [33mPress CTRL+C to quit[0m
+2025-02-08 02:57:03,211 [INFO] werkzeug:  * Restarting with stat
+2025-02-08 02:57:04,436 [INFO] monitoring.contract_monitor: Contract monitor initialized
+2025-02-08 02:57:04,463 [ERROR] db.wallet: Failed to retrieve wallet info: no such column: info
+2025-02-08 02:57:06,096 [ERROR] db.wallet: Database error occurred: table wallet has no column named info
+2025-02-08 02:57:06,194 [WARNING] werkzeug:  * Debugger is active!
+2025-02-08 02:57:06,203 [INFO] werkzeug:  * Debugger PIN: 540-300-446
+2025-02-08 02:57:06,272 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:57:06] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:57:06,277 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:57:06] "GET /api/contracts HTTP/1.1" 200 -
+2025-02-08 02:57:06,281 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:57:06] "GET /api/stats HTTP/1.1" 200 -
+2025-02-08 02:57:06,282 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:57:06] "GET /api/alerts/settings HTTP/1.1" 200 -
+2025-02-08 02:57:06,286 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:57:06] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:57:06,288 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:57:06] "GET /api/contracts HTTP/1.1" 200 -
+2025-02-08 02:57:06,291 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:57:06] "GET /api/alerts/settings HTTP/1.1" 200 -
+2025-02-08 02:57:06,301 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:57:06] "GET /api/stats HTTP/1.1" 200 -
+2025-02-08 02:57:08,076 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:57:08] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:57:10,078 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:57:10] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:57:12,073 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:57:12] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:57:14,075 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:57:14] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:57:16,075 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:57:16] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:57:18,076 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:57:18] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:57:20,075 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:57:20] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:57:22,073 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:57:22] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:57:24,074 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:57:24] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:57:26,075 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:57:26] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:57:28,075 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:57:28] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:57:30,074 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:57:30] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:57:32,074 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:57:32] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:57:34,074 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:57:34] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:57:36,078 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:57:36] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:57:38,076 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:57:38] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:57:40,078 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:57:40] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:57:42,075 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:57:42] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:57:44,077 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:57:44] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:57:46,078 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:57:46] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:57:48,078 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:57:48] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:57:50,077 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:57:50] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:57:52,076 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:57:52] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:57:54,079 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:57:54] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:57:56,077 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:57:56] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:57:58,077 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:57:58] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:58:00,076 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:58:00] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:58:02,079 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:58:02] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:58:04,076 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:58:04] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:58:06,075 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:58:06] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:58:08,076 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:58:08] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:58:10,076 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:58:10] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:58:12,075 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:58:12] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:58:14,075 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:58:14] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:58:16,078 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:58:16] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:58:18,079 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:58:18] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:58:20,076 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:58:20] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:58:22,076 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:58:22] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:58:24,078 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:58:24] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:58:26,077 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:58:26] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:58:28,077 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:58:28] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:58:30,074 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:58:30] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:58:32,076 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:58:32] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:58:34,075 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:58:34] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:58:36,075 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:58:36] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:58:38,075 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:58:38] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:58:40,075 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:58:40] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:58:42,074 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:58:42] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:58:44,075 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:58:44] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:58:46,076 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:58:46] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:58:48,079 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:58:48] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:58:50,077 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:58:50] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:58:52,078 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:58:52] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:58:54,076 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:58:54] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:58:56,074 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:58:56] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:58:58,076 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:58:58] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:58:59,700 [INFO] werkzeug:  * Detected change in '/Users/bluntbrain/Documents/code/agentic_ethereum/aegis-agent-agentic-ethereum/backend/monitoring/contract_monitor.py', reloading
+2025-02-08 02:58:59,944 [INFO] werkzeug:  * Restarting with stat
+2025-02-08 02:59:01,456 [INFO] contract_monitor: Contract monitor initialized and ready to track contracts
+2025-02-08 02:59:01,488 [ERROR] db.wallet: Failed to retrieve wallet info: no such column: info
+2025-02-08 02:59:03,249 [ERROR] db.wallet: Database error occurred: table wallet has no column named info
+2025-02-08 02:59:03,316 [WARNING] werkzeug:  * Debugger is active!
+2025-02-08 02:59:03,325 [INFO] werkzeug:  * Debugger PIN: 540-300-446
+2025-02-08 02:59:03,355 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:59:03] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:59:03,358 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:59:03] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:59:04,081 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:59:04] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:59:06,073 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:59:06] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:59:08,080 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:59:08] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:59:10,080 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:59:10] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:59:12,078 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:59:12] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:59:14,079 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:59:14] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:59:16,078 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:59:16] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:59:18,075 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:59:18] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:59:20,079 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:59:20] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:59:22,078 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:59:22] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:59:24,080 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:59:24] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:59:26,079 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:59:26] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:59:28,077 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:59:28] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:59:30,079 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:59:30] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:59:32,080 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:59:32] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:59:34,079 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:59:34] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:59:36,079 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:59:36] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:59:38,080 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:59:38] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:59:40,076 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:59:40] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:59:42,076 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:59:42] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:59:44,072 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:59:44] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:59:46,076 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:59:46] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:59:48,079 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:59:48] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:59:50,079 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:59:50] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:59:52,074 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:59:52] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:59:54,079 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:59:54] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:59:56,080 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:59:56] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 02:59:58,080 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 02:59:58] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:00:00,075 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:00:00] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:00:02,080 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:00:02] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:00:04,075 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:00:04] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:00:06,076 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:00:06] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:00:08,075 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:00:08] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:00:10,556 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:00:10] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:00:12,560 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:00:12] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:00:14,551 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:00:14] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:00:16,553 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:00:16] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:00:18,550 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:00:18] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:00:20,555 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:00:20] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:00:22,553 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:00:22] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:00:24,552 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:00:24] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:00:26,552 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:00:26] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:00:28,551 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:00:28] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:00:30,557 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:00:30] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:00:32,557 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:00:32] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:00:34,567 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:00:34] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:00:36,559 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:00:36] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:00:38,551 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:00:38] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:00:40,552 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:00:40] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:00:42,076 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:00:42] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:00:44,557 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:00:44] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:00:46,556 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:00:46] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:00:48,556 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:00:48] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:00:50,552 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:00:50] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:00:52,556 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:00:52] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:00:54,559 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:00:54] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:00:56,557 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:00:56] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:00:58,558 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:00:58] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:01:00,552 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:01:00] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:01:02,553 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:01:02] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:01:04,552 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:01:04] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:01:06,553 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:01:06] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:01:08,556 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:01:08] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:01:10,553 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:01:10] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:01:12,559 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:01:12] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:01:14,556 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:01:14] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:01:16,556 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:01:16] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:01:18,552 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:01:18] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:01:20,556 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:01:20] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:01:22,555 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:01:22] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:01:24,554 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:01:24] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:01:26,557 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:01:26] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:01:28,556 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:01:28] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:01:30,551 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:01:30] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:01:32,556 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:01:32] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:01:34,554 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:01:34] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:01:36,560 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:01:36] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:01:38,555 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:01:38] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:01:40,553 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:01:40] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:01:42,557 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:01:42] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:01:58,558 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:01:58] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:02:22,419 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:02:22] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:02:24,079 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:02:24] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:02:26,073 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:02:26] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:02:28,080 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:02:28] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:02:30,080 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:02:30] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:02:32,080 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:02:32] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:02:34,079 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:02:34] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:02:36,073 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:02:36] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:02:38,080 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:02:38] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:02:40,076 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:02:40] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:02:42,073 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:02:42] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:02:44,080 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:02:44] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:02:46,076 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:02:46] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:02:48,553 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:02:48] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:02:50,554 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:02:50] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:02:52,553 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:02:52] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:02:54,556 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:02:54] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:02:56,556 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:02:56] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:02:58,552 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:02:58] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:03:00,558 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:03:00] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:03:02,556 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:03:02] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:03:04,555 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:03:04] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:03:06,559 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:03:06] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:03:08,551 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:03:08] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:03:10,555 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:03:10] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:03:12,554 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:03:12] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:03:14,552 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:03:14] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:03:16,556 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:03:16] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:03:18,552 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:03:18] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:03:20,554 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:03:20] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:03:22,555 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:03:22] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:03:24,557 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:03:24] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:03:26,556 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:03:26] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:03:28,552 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:03:28] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:03:30,558 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:03:30] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:03:32,556 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:03:32] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:03:34,553 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:03:34] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:03:36,558 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:03:36] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:03:38,551 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:03:38] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:03:40,557 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:03:40] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:03:42,559 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:03:42] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:03:44,558 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:03:44] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:03:46,557 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:03:46] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:03:58,559 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:03:58] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:04:22,201 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:04:22] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:04:24,079 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:04:24] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:04:26,079 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:04:26] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:04:28,076 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:04:28] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:04:30,079 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:04:30] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:04:32,078 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:04:32] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:04:34,078 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:04:34] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:04:36,076 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:04:36] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:04:38,078 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:04:38] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:04:40,079 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:04:40] "GET /api/logs HTTP/1.1" 200 -
+2025-02-08 03:04:42,080 [INFO] werkzeug: 127.0.0.1 - - [08/Feb/2025 03:04:42] "GET /api/logs HTTP/1.1" 200 -

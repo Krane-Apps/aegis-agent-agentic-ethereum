@@ -1,0 +1,44 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: ClankerToken
+    network: base
+    source:
+      address: "0x02e739740b007bd5e4600b9736a143b6e794d223"
+      abi: ClankerToken
+      startBlock: 25301871
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - CrosschainBurn
+        - CrosschainMint
+        - DelegateChanged
+        - DelegateVotesChanged
+        - EIP712DomainChanged
+        - Transfer
+      abis:
+        - name: ClankerToken
+          file: ./abis/ClankerToken.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+        - event: CrosschainBurn(indexed address,uint256,indexed address)
+          handler: handleCrosschainBurn
+        - event: CrosschainMint(indexed address,uint256,indexed address)
+          handler: handleCrosschainMint
+        - event: DelegateChanged(indexed address,indexed address,indexed address)
+          handler: handleDelegateChanged
+        - event: DelegateVotesChanged(indexed address,uint256,uint256)
+          handler: handleDelegateVotesChanged
+        - event: EIP712DomainChanged()
+          handler: handleEIP712DomainChanged
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: ./src/clanker-token.ts
