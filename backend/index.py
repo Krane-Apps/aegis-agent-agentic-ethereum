@@ -2,11 +2,13 @@ from flask import Flask, request, Response, stream_with_context, jsonify
 from flask_cors import CORS
 from dotenv import load_dotenv
 import logging
+import threading
 from sqlalchemy.orm import Session
 from datetime import datetime
 
 from agent.initialize_agent import initialize_agent
 from agent.run_agent import run_agent
+from agent.autonomous_monitor import AutonomousMonitor
 from db.setup import setup
 from utils.logging_config import setup_logging
 
@@ -33,6 +35,39 @@ setup()
 # initialize the agent
 agent_executor = initialize_agent()
 app.agent_executor = agent_executor
+
+# initialize and start autonomous monitor
+autonomous_monitor = AutonomousMonitor()
+monitor_thread = threading.Thread(target=autonomous_monitor.run, name="autonomous-monitor")
+monitor_thread.daemon = True
+monitor_thread.start()
+logger.info("Started autonomous monitoring thread")
+
+@app.route("/api/monitor/status", methods=['GET'])
+def get_monitor_status():
+    """Get autonomous monitor status"""
+    return jsonify({
+        "running": autonomous_monitor.running,
+        "thread_alive": monitor_thread.is_alive()
+    })
+
+@app.route("/api/monitor/stop", methods=['POST'])
+def stop_monitor():
+    """Stop autonomous monitoring"""
+    autonomous_monitor.stop()
+    return jsonify({"success": True, "message": "Autonomous monitoring stopped"})
+
+@app.route("/api/monitor/start", methods=['POST'])
+def start_monitor():
+    """Start autonomous monitoring"""
+    global monitor_thread
+    if not monitor_thread.is_alive():
+        autonomous_monitor.running = False  # ensure old thread is stopped
+        monitor_thread = threading.Thread(target=autonomous_monitor.run, name="autonomous-monitor")
+        monitor_thread.daemon = True
+        monitor_thread.start()
+        return jsonify({"success": True, "message": "Autonomous monitoring started"})
+    return jsonify({"success": False, "message": "Monitoring already running"})
 
 # Interact with the agent
 @app.route("/api/chat", methods=['POST'])
@@ -169,7 +204,7 @@ def get_logs():
             limit = request.args.get('limit', default=100, type=int)
             
             # build query - only get contract_monitor logs
-            query = session.query(Log).filter(Log.source == 'contract_monitor')
+            query = session.query(Log).filter(Log.source == 'autonomous_monitor')
             
             if contract_id:
                 query = query.filter(Log.contract_id == contract_id)
@@ -197,7 +232,7 @@ def get_contract_logs(contract_id):
         with Session() as session:
             logs = session.query(Log)\
                 .filter(Log.contract_id == contract_id)\
-                .filter(Log.source == 'contract_monitor')\
+                .filter(Log.source == 'autonomous_monitor')\
                 .order_by(Log.timestamp.desc())\
                 .limit(100)\
                 .all()

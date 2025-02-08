@@ -39,3 +39,6 @@ __pycache__/
 *.pyc
 .env
 *.db
+
+/subgraph-transaction
+/docs
