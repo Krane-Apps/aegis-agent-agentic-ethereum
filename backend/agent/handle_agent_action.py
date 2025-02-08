@@ -11,5 +11,7 @@ def handle_agent_action(agent_action, content):
         return
     if agent_action == constants.DEPLOY_NFT:
         return
+    if agent_action == constants.GET_LAST_TRANSACTIONS:
+        return
 
     

@@ -7,6 +7,8 @@ import "@coinbase/onchainkit/styles.css";
 import "@rainbow-me/rainbowkit/styles.css";
 import dynamic from "next/dynamic";
 import { ThemeProvider } from "next-themes";
+import { Bounce } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -46,6 +48,19 @@ export default function RootLayout({
           enableSystem={false}
         >
           <OnchainProviders>{children}</OnchainProviders>
+          <ToastContainer
+            position="top-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick={false}
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+            transition={Bounce}
+          />
         </ThemeProvider>
       </body>
     </html>

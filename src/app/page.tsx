@@ -14,16 +14,15 @@ import {
   Shield,
   AlertTriangle,
   Activity,
-  Mail,
-  Bell,
   Zap,
   Database,
   Plus,
   CheckCircle2,
   AlertCircle,
   X,
+  Trash2,
 } from "lucide-react";
-import { useToast } from "src/components/ui/use-toast";
+import { toast } from "react-toastify";
 import { useAccount } from "wagmi";
 import {
   Dialog,
@@ -100,7 +99,6 @@ const getStatusIcon = (status: string) => {
 
 export default function Home() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const { toast } = useToast();
   const { address } = useAccount();
 
   const {
@@ -110,6 +108,7 @@ export default function Home() {
     loading,
     error,
     addContract,
+    deleteContract,
     refreshData,
   } = useContractMonitor();
 
@@ -129,20 +128,12 @@ export default function Home() {
   const onSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
       await addContract(values);
-      toast({
-        title: "Contract Monitoring Added",
-        description:
-          "We'll start monitoring this contract for security threats.",
-      });
+      toast.success("Contract Monitoring Added");
       setIsDialogOpen(false);
       form.reset();
       await refreshData(); // refresh all data
     } catch (error) {
-      toast({
-        title: "Error",
-        description: "Failed to add contract for monitoring.",
-        variant: "destructive",
-      });
+      toast.error("Failed to add contract for monitoring.");
     }
   };
 
@@ -463,10 +454,7 @@ export default function Home() {
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          <Card className="col-span-2 p-6 bg-gray-900/50 border-gray-800 backdrop-blur-sm">
-            <h2 className="text-xl font-semibold mb-6 text-white">
-              Monitoring Logs
-            </h2>
+          <Card className="col-span-2 p-6 bg-gray-900/50 backdrop-blur-sm">
             <LogsViewer />
           </Card>
 
@@ -543,8 +531,13 @@ export default function Home() {
                   contracts.map((contract) => (
                     <div
                       key={contract.id}
-                      className="p-3 bg-black/30 rounded-lg border border-gray-800/50 hover:bg-gray-800/30"
+                      className="p-4 bg-black/30 rounded-lg border border-gray-800/50 hover:bg-gray-800/30"
                     >
+                      <div className="mb-3">
+                        <h3 className="text-lg font-medium text-white">
+                          {contract.description || "Unnamed Contract"}
+                        </h3>
+                      </div>
                       <div className="flex items-center justify-between mb-2">
                         <span className="text-sm text-blue-400">
                           {contract.address}
@@ -553,29 +546,39 @@ export default function Home() {
                           {contract.network}
                         </span>
                       </div>
-                      {contract.description && (
-                        <p className="text-sm text-gray-400 mb-2">
-                          {contract.description}
-                        </p>
-                      )}
-                      <div className="flex items-center justify-between">
+                      <div className="flex items-center justify-between mt-3">
                         <div className="flex items-center gap-2">
                           {getStatusIcon(contract.status)}
                           <span className="text-sm text-gray-300">
                             {contract.status}
                           </span>
+                          <span
+                            className={`px-2 py-1 rounded text-xs ${
+                              contract.threatLevel === "Low"
+                                ? "bg-green-500/20 text-green-400"
+                                : contract.threatLevel === "Medium"
+                                  ? "bg-yellow-500/20 text-yellow-400"
+                                  : "bg-red-500/20 text-red-400"
+                            }`}
+                          >
+                            {contract.threatLevel}
+                          </span>
                         </div>
-                        <span
-                          className={`px-2 py-1 rounded text-xs ${
-                            contract.threatLevel === "Low"
-                              ? "bg-green-500/20 text-green-400"
-                              : contract.threatLevel === "Medium"
-                                ? "bg-yellow-500/20 text-yellow-400"
-                                : "bg-red-500/20 text-red-400"
-                          }`}
+                        <Button
+                          variant="ghost"
+                          size="sm"
+                          className="text-red-400 hover:text-red-300 hover:bg-red-900/20"
+                          onClick={async () => {
+                            try {
+                              await deleteContract(contract.id);
+                              toast.success("Contract Removed");
+                            } catch (error) {
+                              toast.error("Failed to remove contract.");
+                            }
+                          }}
                         >
-                          {contract.threatLevel}
-                        </span>
+                          <Trash2 className="w-4 h-4" />
+                        </Button>
                       </div>
                     </div>
                   ))

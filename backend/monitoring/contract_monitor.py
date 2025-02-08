@@ -7,6 +7,7 @@ from utils.email_service import send_alert_email
 import logging
 from eth_utils import to_checksum_address
 from web3.exceptions import BlockNotFound
+from agent.custom_actions.get_last_transactions import get_last_transactions, format_transaction_log
 
 # Configure logging
 logging.basicConfig(
@@ -20,6 +21,7 @@ class ContractMonitor:
     def __init__(self, db_session):
         self.db_session = db_session
         self.monitors = {}
+        self.stop_flags = {} 
         self.last_processed_block = {}
         logger = logging.getLogger('contract_monitor')
         logger.info("Contract monitor initialized and ready to track contracts")
@@ -125,102 +127,40 @@ class ContractMonitor:
         while True:
             try:
                 with self.db_session() as session:
-                    # fetch contract details
                     contract = session.query(Contract).get(contract_id)
                     if not contract:
-                        logger.warning(f"Contract {contract_id} not found in database, stopping monitor")
+                        logger.warning(f"Contract {contract_id} not found, stopping monitor")
                         break
-                    
+
                     logger.info(f"Monitoring contract {contract.address} on {contract.network}")
                     
-                    # initialize web3 connection
-                    web3 = self.get_web3(contract.network)
-                    contract_address = to_checksum_address(contract.address)
+                    # get last 10 transactions
+                    transactions = get_last_transactions(contract.address, contract.network)
                     
-                    # get block range to check
-                    current_block = web3.eth.block_number
-                    from_block = self.last_processed_block.get(contract_id, current_block - 100)
-                    
-                    logger.info(f"Scanning blocks {from_block} to {current_block} for contract activity")
-                    
-                    try:
-                        # check contract code exists
-                        code = web3.eth.get_code(contract_address)
-                        if len(code) == 0:
-                            logger.error(f"No contract code found at address {contract_address}")
-                            continue
-                        
-                        logger.info(f"Contract code verified at {contract_address}")
-                        
-                        # get contract balance
-                        balance = web3.eth.get_balance(contract_address)
-                        logger.info(f"Current contract balance: {web3.from_wei(balance, 'ether')} ETH")
-                        
-                        # get transactions
-                        logger.info(f"Fetching transactions for contract {contract_address}")
-                        transactions = self.get_contract_transactions(
-                            web3, 
-                            contract_address, 
-                            from_block, 
-                            current_block
-                        )
-                        
-                        if transactions:
-                            logger.info(f"Found {len(transactions)} transactions to analyze")
+                    if transactions:
+                        logger.info(f"Retrieved {len(transactions)} recent transactions")
+                        for tx in transactions:
+                            logger.info(format_transaction_log(tx))
                             
-                            # Analyze each transaction
-                            all_threats = []
-                            for idx, tx in enumerate(transactions, 1):
-                                logger.info(f"Analyzing transaction {idx}/{len(transactions)}")
-                                threats = self.analyze_transaction(web3, tx)
-                                if threats:
-                                    all_threats.extend(threats)
-                                    logger.warning(f"Found {len(threats)} threats in transaction")
+                            # Analyze transaction for threats
+                            if tx['is_error']:
+                                logger.warning(f"Failed transaction detected: {tx['hash']}")
                             
-                            if all_threats:
-                                logger.warning(f"Total threats detected: {len(all_threats)}")
-                                
-                                # Update contract status
-                                old_status = contract.status
-                                old_threat_level = contract.threat_level
-                                contract.status = 'Warning'
-                                contract.threat_level = 'Medium'
-                                
-                                logger.info(f"Updated contract status from {old_status} to Warning")
-                                logger.info(f"Updated threat level from {old_threat_level} to Medium")
-                                
-                                # Create alerts
-                                for threat in all_threats:
-                                    alert = Alert(
-                                        contract_id=contract.id,
-                                        type=threat['type'],
-                                        description=threat['description']
-                                    )
-                                    session.add(alert)
-                                    logger.warning(f"Created alert: {threat['type']} - {threat['description']}")
-                                
-                                # send notifications
-                                self.send_notifications(session, contract, all_threats)
-                                
-                                session.commit()
-                                logger.info("All alerts and notifications processed")
-                        else:
-                            logger.info(f"No new transactions found for contract {contract_address}")
-                        
-                        # update last processed block
-                        self.last_processed_block[contract_id] = current_block
-                        logger.info(f"Updated last processed block to {current_block}")
-                        
-                    except Exception as e:
-                        logger.error(f"Error processing contract: {str(e)}")
+                            if float(tx['value']) > 10:  # More than 10 ETH
+                                logger.warning(f"High value transfer detected: {tx['value']} ETH")
+                            
+                            if int(tx['gas_used']) > 1000000:  # High gas usage
+                                logger.warning(f"High gas usage detected: {tx['gas_used']}")
+                    else:
+                        logger.info("No recent transactions found")
                     
-                    # calculate next check time
+                    # sleep until next check
                     sleep_time = self.get_sleep_time(contract.monitoring_frequency)
-                    logger.info(f"Next check in {sleep_time} seconds (monitoring frequency: {contract.monitoring_frequency})")
+                    logger.info(f"Next check in {sleep_time} seconds")
                     time.sleep(sleep_time)
                     
             except Exception as e:
-                logger.error(f"Critical error in monitoring loop: {str(e)}")
+                logger.error(f"Error in monitoring loop: {str(e)}")
                 time.sleep(60)
     
     def send_notifications(self, session, contract, threats):
@@ -268,4 +208,11 @@ class ContractMonitor:
             self.monitors[contract_id] = thread
             logger.info(f"Monitor thread started for contract {contract_id}")
         else:
-            logger.warning(f"Monitor already exists for contract {contract_id}") 
+            logger.warning(f"Monitor already exists for contract {contract_id}")
+    
+    def stop_monitoring(self, contract_id):
+        """Stop monitoring a specific contract"""
+        if contract_id in self.monitors:
+            self.stop_flags[contract_id] = True
+            self.monitors.pop(contract_id, None)
+            logger.info(f"Stopped monitoring contract {contract_id}") 

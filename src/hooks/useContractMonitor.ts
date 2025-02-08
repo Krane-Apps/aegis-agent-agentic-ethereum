@@ -4,7 +4,7 @@ interface Contract {
   id: number;
   address: string;
   network: string;
-  description?: string;
+  description: string | null;
   status: 'Healthy' | 'Warning' | 'Critical';
   threatLevel: 'Low' | 'Medium' | 'High';
 }
@@ -48,6 +48,9 @@ export function useContractMonitor() {
     network: string;
     emergencyFunction: string;
     emails: string[];
+    description?: string;
+    alertThreshold?: string;
+    monitoringFrequency?: string;
   }) => {
     try {
       const response = await fetch(`${API_BASE}/api/contracts`, {
@@ -112,6 +115,22 @@ export function useContractMonitor() {
     loadData();
   }, []);
 
+  const deleteContract = async (contractId: number) => {
+    try {
+      const response = await fetch(`${API_BASE}/api/contracts/${contractId}`, {
+        method: 'DELETE',
+      });
+      
+      if (!response.ok) throw new Error('Failed to delete contract');
+      
+      // refresh data after successful deletion
+      await fetchContracts();
+    } catch (error) {
+      console.error('Error deleting contract:', error);
+      throw error;
+    }
+  };
+
   return {
     contracts,
     stats,
@@ -119,6 +138,7 @@ export function useContractMonitor() {
     loading,
     error,
     addContract,
+    deleteContract,
     refreshData: async () => {
       await Promise.all([
         fetchContracts(),

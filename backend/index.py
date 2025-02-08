@@ -65,12 +65,14 @@ def get_contracts():
             contracts = session.query(Contract).all()
             return jsonify({
                 "contracts": [{
-                    "id": c.id,
-                    "address": c.address,
-                    "status": c.status,
-                    "threatLevel": c.threat_level,
-                    "network": c.network
-                } for c in contracts]
+                    "id": contract.id,
+                    "address": contract.address,
+                    "network": contract.network,
+                    "description": contract.description,
+                    "status": contract.status,
+                    "threatLevel": contract.threat_level,
+                    "monitoringFrequency": contract.monitoring_frequency
+                } for contract in contracts]
             })
     except Exception as e:
         logger.error(f"Error fetching contracts: {str(e)}")
@@ -88,7 +90,7 @@ def add_contract():
                 address=data['contractAddress'],
                 network=data['network'],
                 emergency_function=data['emergencyFunction'],
-                description=data.get('description'),
+                description=data.get('description', ''),
                 alert_threshold=data.get('alertThreshold', 'Medium'),
                 monitoring_frequency=data.get('monitoringFrequency', '5min')
             )
@@ -96,6 +98,8 @@ def add_contract():
             session.flush()
             
             logger.info(f"Created contract with ID: {contract.id}")
+            if contract.description:
+                logger.info(f"Contract description: {contract.description}")
             
             # add email addresses
             for email in data['emails']:
@@ -210,6 +214,36 @@ def get_contract_logs(contract_id):
     except Exception as e:
         logger.error(f"Error fetching contract logs: {str(e)}")
         return jsonify({"error": "Failed to fetch contract logs"}), 500
+
+@app.route("/api/contracts/<int:contract_id>", methods=['DELETE'])
+def delete_contract(contract_id):
+    try:
+        with Session() as session:
+            contract = session.query(Contract).get(contract_id)
+            if not contract:
+                return jsonify({"error": "Contract not found"}), 404
+            
+            # stop monitoring thread if exists
+            if contract_id in contract_monitor.monitors:
+                # Note: You might need to implement a stop method in your monitor thread
+                logger.info(f"Stopping monitor for contract {contract_id}")
+                contract_monitor.monitors.pop(contract_id)
+            
+            # delete related records
+            session.query(AlertEmail).filter_by(contract_id=contract_id).delete()
+            session.query(Alert).filter_by(contract_id=contract_id).delete()
+            session.query(Log).filter_by(contract_id=contract_id).delete()
+            
+            # delete contract
+            session.delete(contract)
+            session.commit()
+            
+            logger.info(f"Contract {contract_id} deleted successfully")
+            return jsonify({"success": True, "message": "Contract deleted successfully"})
+            
+    except Exception as e:
+        logger.error(f"Error deleting contract: {str(e)}")
+        return jsonify({"error": "Failed to delete contract"}), 500
 
 if __name__ == "__main__":
     app.run(debug=True)
