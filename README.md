@@ -12,6 +12,16 @@
 
 ---
 
+## **Integrations & Code References**
+Click links to view implementation 
+
+[View CDP Agentkit Code](https://github.com/Krane-Apps/aegis-agent-agentic-ethereum/blob/main/backend/agent/initialize_agent.py#L40) • 
+[View Onchain Kit Code](https://github.com/Krane-Apps/aegis-agent-agentic-ethereum/blob/main/src/components/OnchainProviders.tsx#L2) • 
+[View Graph Integration](https://github.com/Krane-Apps/aegis-agent-agentic-ethereum/commit/79b42f8383d914c84cb6e06604a38b425781a36b) • 
+[View Base Integration](https://github.com/Krane-Apps/aegis-agent-agentic-ethereum/blob/main/backend/agent/custom_actions/get_last_transactions.py#L17)
+
+---
+
 ### **Why This Wins?**  
 Combines AI's predictive power with blockchain's transparency to create a defense system that evolves with new threats. Targets the $10B+ lost annually to DeFi hacks.  
 
@@ -255,4 +265,3 @@ npm run dev
 
 The frontend will be available at `http://localhost:3000` and the backend at `http://localhost:5000`
 ---
-
