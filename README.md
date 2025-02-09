@@ -22,6 +22,14 @@ Click links to view implementation
 
 ---
 
+## **Screenshots**
+<div align="center" style="display: flex; gap: 20px; margin: 20px 0;">
+  <img src="https://github.com/user-attachments/assets/91fa0c2b-bc2e-4fd3-9da4-2f6e22db5f95" alt="Aegis Dashboard" width="48%" style="border-radius: 10px;"/>
+  <img src="https://github.com/user-attachments/assets/75909683-2e11-40f8-9155-5d8a47228635" alt="Aegis Monitoring" width="48%" style="border-radius: 10px;"/>
+</div>
+
+---
+
 ### **Why This Wins?**  
 Combines AI's predictive power with blockchain's transparency to create a defense system that evolves with new threats. Targets the $10B+ lost annually to DeFi hacks.  
 
@@ -262,6 +270,4 @@ cp .env.example .env
 # Run the development server
 npm run dev
 ```
-
-The frontend will be available at `http://localhost:3000` and the backend at `http://localhost:5000`
 ---
