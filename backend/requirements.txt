@@ -7,3 +7,6 @@ requests
 langchain_openai
 langgraph
 cdp_langchain
+sendgrid
+gunicorn
+
