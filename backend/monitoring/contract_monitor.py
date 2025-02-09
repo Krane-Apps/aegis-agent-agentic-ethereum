@@ -3,7 +3,6 @@ import os
 import time
 import threading
 from db.models import Contract, Alert, AlertEmail
-from utils.email_service import send_alert_email
 import logging
 from eth_utils import to_checksum_address
 from web3.exceptions import BlockNotFound

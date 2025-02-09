@@ -47,6 +47,7 @@ import SignupButton from "src/components/SignupButton";
 import LoginButton from "src/components/LoginButton";
 import { useContractMonitor } from "src/hooks/useContractMonitor";
 import { LogsViewer } from "src/components/LogsViewer";
+import Image from "next/image";
 
 const formSchema = z.object({
   network: z.string().min(1, "Please select a network"),
@@ -148,10 +149,17 @@ export default function Home() {
 
       <div className="relative w-full px-8 py-8">
         {/* Header */}
-        <div className="flex items-center justify-between mb-12">
+        <div className="flex items-center justify-between mb-8">
           <div className="flex items-center gap-4">
-            <div className="p-3 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl">
-              <Shield className="w-8 h-8 text-white" />
+            <div className="relative w-16 h-16 rounded-2xl p-4 bg-gradient-to-br from-blue-900/80 via-purple-900/80 to-pink-900/80 shadow-lg hover:shadow-blue-900/30 transition-all duration-300 backdrop-blur-sm border border-blue-950/50">
+              <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-800/20 via-purple-800/20 to-pink-800/20 animate-gradient-slow" />
+              <Image
+                src="/aegislogo.png"
+                alt="Aegis Logo"
+                fill
+                className="object-contain p-0"
+                priority
+              />
             </div>
             <div>
               <h1 className="text-3xl font-bold text-white mb-1">

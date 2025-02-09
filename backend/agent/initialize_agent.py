@@ -11,10 +11,11 @@ from cdp_langchain.utils import CdpAgentkitWrapper
 
 from db.wallet import add_wallet_info, get_wallet_info
 from agent.custom_actions.get_latest_block import get_latest_block
-from agent.custom_actions.get_last_transactions import get_last_transactions
+from agent.custom_actions.get_last_transactions import get_last_transactions, format_transaction_log
+from agent.custom_actions.send_alert_email import send_alert_email
 
 def initialize_agent():
-    """Initialize the agent with CDP Agentkit."""
+    """Initialize the agent with CDP Agentkit and monitoring tools."""
     # initialize llm
     llm = ChatOpenAI(model=constants.AGENT_MODEL)
 
@@ -45,15 +46,57 @@ def initialize_agent():
 
     # initialize CDP Agentkit Toolkit and get tools.
     cdp_toolkit = CdpToolkit.from_cdp_agentkit_wrapper(agentkit)
-    tools = cdp_toolkit.get_tools() + [get_latest_block, get_last_transactions]
+    
+    # create descriptions for the monitoring tools
+    get_latest_block.description = """
+    Get real-time block data from the network, including:
+    - Block number and timestamp
+    - All addresses involved in transactions
+    - Total value transferred
+    - Transaction counts and gas usage
+    Use this to monitor for suspicious blockchain activity.
+    """
+    
+    get_last_transactions.description = """
+    Get the last 10 transactions for a specific contract address.
+    Provides detailed transaction data including:
+    - Transaction hash
+    - From/To addresses
+    - Value transferred
+    - Gas usage
+    - Method calls
+    - Timestamp
+    Use this to analyze recent contract interactions and detect threats.
+    """
+
+    send_alert_email.description = """
+    Send a security alert email when threats or suspicious activities are detected.
+    Required parameters:
+    - contract_address: The address of the contract being monitored
+    - network: The blockchain network (ethereum, base, base-sepolia)
+    - scan_results: Detailed findings from the security scan
+    - threat_level: Risk level (Low, Medium, High)
+    - to_email: Recipient's email address (defaults to hello@kraneapps.com)
+    Use this to notify stakeholders about security findings.
+    """
+
+    # combine CDP tools with monitoring tools
+    tools = cdp_toolkit.get_tools() + [
+        get_latest_block,
+        get_last_transactions,
+        send_alert_email
+    ]
 
     # store buffered conversation history in memory.
     memory = MemorySaver()
 
-    # create ReAct Agent using the LLM and CDP Agentkit tools.
-    return create_react_agent(
+    # create ReAct Agent using the LLM and tools.
+    agent = create_react_agent(
         llm,
         tools=tools,
         checkpointer=memory,
         state_modifier=constants.AGENT_PROMPT,
     )
+
+    print("Initialized agent with monitoring tools", flush=True)
+    return agent

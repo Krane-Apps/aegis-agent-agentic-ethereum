@@ -3,9 +3,10 @@ import logging
 from typing import Dict, Any
 from langchain_core.messages import HumanMessage
 from db.setup import setup
-from db.models import Contract, Log
+from db.models import Contract, Log, AlertEmail
 from agent.initialize_agent import initialize_agent
 from datetime import datetime
+from agent.custom_actions.send_alert_email import send_alert_email
 
 # setup logging
 logger = logging.getLogger("autonomous_monitor")
@@ -37,13 +38,27 @@ class AutonomousMonitor:
         """Analyze a single contract's transactions using the agent"""
         try:
             with self.Session() as session:
+                # get blacklisted addresses
+                blacklisted_addresses = []
+                blacklist_addresses_set = {addr.address.lower() for addr in blacklisted_addresses}
+                
+                # get email recipients for this contract
+                email_recipients = session.query(AlertEmail.email).filter(
+                    AlertEmail.contract_id == contract.id
+                ).all()
+                email_recipients = [email[0] for email in email_recipients]
+                
                 # save start of analysis log
+                scan_start_msg = f"🔍 Starting Threat Analysis for contract {contract.address}"
                 self.save_analysis_log(
                     session,
                     contract.id,
-                    f"🔍 Starting Threat Analysis for contract {contract.address}",
+                    scan_start_msg,
                     "INFO"
                 )
+
+                # initialize scan results for email
+                scan_results = [scan_start_msg]
 
                 # format the analysis request for the agent
                 prompt = f"""You are a security monitoring agent. Analyze the latest transactions for contract {contract.address} on {contract.network} for security threats.
@@ -54,9 +69,12 @@ Contract Details:
 - Current Threat Level: {contract.threat_level}
 - Emergency Function: {contract.emergency_function}
 
+Blacklisted Addresses: {[addr for addr in blacklist_addresses_set]}
+
 Follow these steps:
 1. Use get_last_transactions to fetch recent transactions for this contract
 2. For each transaction:
+   - Check if from_address or to_address is in blacklisted addresses (CRITICAL RISK)
    - Check for suspicious patterns (flash loans, reentrancy, etc.)
    - Analyze value transfers and gas usage
    - Look for known attack vectors
@@ -64,6 +82,7 @@ Follow these steps:
    - Call the emergency function using CDP Agentkit
    - Update contract status
 4. Log all findings with appropriate severity levels
+5. Send alert emails to stakeholders using send_alert_email tool
 
 Take action autonomously if threats are detected. You have access to all necessary tools through CDP Agentkit.
 
@@ -71,7 +90,8 @@ Format your analysis logs with emojis:
 - 🟢 for safe/normal transactions
 - 🟡 for suspicious but not critical patterns
 - 🔴 for high-risk threats
-- 🚨 for emergency actions taken"""
+- 🚨 for emergency actions taken
+- ⛔ for blacklisted address interactions"""
 
                 # run agent analysis
                 logger.info(f"[autonomous_monitor] Analyzing contract {contract.address}")
@@ -85,27 +105,53 @@ Format your analysis logs with emojis:
                         message = chunk["agent"]["messages"][0].content
                         # determine log level based on emoji
                         level = "INFO"
-                        if "🔴" in message or "🚨" in message:
+                        if "🔴" in message or "🚨" in message or "⛔" in message:
                             level = "ERROR"
+                            contract.status = "Critical"
+                            contract.threat_level = "High"
+                            session.commit()
                         elif "🟡" in message:
                             level = "WARNING"
+                            if contract.threat_level == "Low":
+                                contract.status = "Warning"
+                                contract.threat_level = "Medium"
+                                session.commit()
                         
-                        # save to database
+                        # save to database and collect for email
                         self.save_analysis_log(session, contract.id, message, level)
+                        scan_results.append(message)
                         logger.info(f"[autonomous_monitor] {message}")
                     
                     elif "tools" in chunk:
                         message = chunk["tools"]["messages"][0].content
                         self.save_analysis_log(session, contract.id, f"🛠️ {message}", "INFO")
+                        scan_results.append(f"🛠️ {message}")
                         logger.info(f"[autonomous_monitor] {message}")
 
                 # save end of analysis log
+                completion_msg = f"✅ Completed Threat Analysis for contract {contract.address}"
                 self.save_analysis_log(
                     session,
                     contract.id,
-                    f"✅ Completed Threat Analysis for contract {contract.address}",
+                    completion_msg,
                     "INFO"
                 )
+                scan_results.append(completion_msg)
+
+                # send email report using the tool
+                scan_report = "\n".join(scan_results)
+                for email in email_recipients:
+                    result = send_alert_email(
+                        contract_address=contract.address,
+                        network=contract.network,
+                        scan_results=scan_report,
+                        threat_level=contract.threat_level,
+                        to_email=email
+                    )
+                    if result["success"]:
+                        logger.info(f"[autonomous_monitor] Successfully sent alert email to {email}")
+                    else:
+                        logger.error(f"[autonomous_monitor] Failed to send alert email to {email}: {result['message']}")
 
         except Exception as e:
             error_msg = f"Error analyzing contract {contract.address}: {str(e)}"
