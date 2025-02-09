@@ -128,7 +128,8 @@ def add_contract():
                 emergency_function=data['emergencyFunction'],
                 description=data.get('description', ''),
                 alert_threshold=data.get('alertThreshold', 'Medium'),
-                monitoring_frequency=data.get('monitoringFrequency', '5min')
+                monitoring_frequency=data.get('monitoringFrequency', '5min'),
+                subgraph_url=data.get('subgraphUrl')  # Add subgraph URL if provided
             )
             session.add(contract)
             session.flush()
@@ -136,6 +137,8 @@ def add_contract():
             logger.info(f"Created contract with ID: {contract.id}")
             if contract.description:
                 logger.info(f"Contract description: {contract.description}")
+            if contract.subgraph_url:
+                logger.info(f"Subgraph URL configured: {contract.subgraph_url}")
             
             # add email addresses
             for email in data['emails']:
@@ -286,4 +289,5 @@ if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
     # run the app binding to 0.0.0.0
     app.run(host='0.0.0.0', port=port)
+    # app.run(debug=True)
     

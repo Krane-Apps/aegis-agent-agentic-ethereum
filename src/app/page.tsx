@@ -60,6 +60,7 @@ const formSchema = z.object({
     .array(z.string().email("Invalid email format"))
     .min(1, "At least one email is required"),
   description: z.string().optional(),
+  subgraphUrl: z.string().url("Invalid URL format").optional(),
   alertThreshold: z.enum(["Low", "Medium", "High"]).default("Medium"),
   monitoringFrequency: z
     .enum(["1min", "5min", "15min", "30min", "1hour"])
@@ -121,6 +122,7 @@ export default function Home() {
       emergencyFunction: "",
       emails: [""],
       description: "",
+      subgraphUrl: "",
       alertThreshold: "Medium",
       monitoringFrequency: "5min",
     },
@@ -273,6 +275,30 @@ export default function Home() {
                                 className="bg-gray-800/50 border-gray-700 text-white placeholder:text-gray-500"
                               />
                             </FormControl>
+                            <FormMessage />
+                          </FormItem>
+                        )}
+                      />
+
+                      <FormField
+                        control={form.control}
+                        name="subgraphUrl"
+                        render={({ field }: any) => (
+                          <FormItem>
+                            <FormLabel className="text-gray-300">
+                              Subgraph URL (Optional)
+                            </FormLabel>
+                            <FormControl>
+                              <Input
+                                {...field}
+                                placeholder="https://api.studio.thegraph.com/query/your-subgraph"
+                                className="bg-gray-800/50 border-gray-700 text-white placeholder:text-gray-500"
+                              />
+                            </FormControl>
+                            <p className="text-xs text-gray-500">
+                              Add your subgraph URL to enable advanced
+                              monitoring with The Graph Protocol data
+                            </p>
                             <FormMessage />
                           </FormItem>
                         )}
@@ -544,8 +570,16 @@ export default function Home() {
                       className="p-4 bg-black/30 rounded-lg border border-gray-800/50 hover:bg-gray-800/30"
                     >
                       <div className="mb-3">
-                        <h3 className="text-lg font-medium text-white">
+                        <h3 className="text-lg font-medium text-white flex items-center gap-2">
                           {contract.description || "Unnamed Contract"}
+                          {contract.subgraphUrl && (
+                            <span
+                              className="text-xs bg-blue-500/20 text-blue-400 px-2 py-1 rounded-full"
+                              title="Enhanced monitoring with The Graph"
+                            >
+                              Graph
+                            </span>
+                          )}
                         </h3>
                       </div>
                       <div className="flex items-center justify-between mb-2">

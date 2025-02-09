@@ -17,6 +17,7 @@ class Contract(Base):
     monitoring_frequency = Column(String(10), default='5min')
     status = Column(String(20), default='Healthy')
     threat_level = Column(String(20), default='Low')
+    subgraph_url = Column(String(255), nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow)
     
     alerts = relationship("Alert", back_populates="contract")

@@ -7,6 +7,8 @@ interface Contract {
   description: string | null;
   status: 'Healthy' | 'Warning' | 'Critical';
   threatLevel: 'Low' | 'Medium' | 'High';
+  monitoringFrequency: string;
+  subgraphUrl?: string;
 }
 
 interface Stats {

@@ -7,6 +7,8 @@ from db.models import Contract, Log, AlertEmail
 from agent.initialize_agent import initialize_agent
 from datetime import datetime
 from agent.custom_actions.send_alert_email import send_alert_email
+from utils.graph_service import get_contract_activity
+import json
 
 # setup logging
 logger = logging.getLogger("autonomous_monitor")
@@ -60,6 +62,18 @@ class AutonomousMonitor:
                 # initialize scan results for email
                 scan_results = [scan_start_msg]
 
+                # Get subgraph data if URL is provided
+                subgraph_data = None
+                if contract.subgraph_url:
+                    subgraph_data = get_contract_activity(contract.subgraph_url, contract.address)
+                    if subgraph_data:
+                        self.save_analysis_log(
+                            session,
+                            contract.id,
+                            "📊 Retrieved data from subgraph",
+                            "INFO"
+                        )
+
                 # format the analysis request for the agent
                 prompt = f"""You are a security monitoring agent. Analyze the latest transactions for contract {contract.address} on {contract.network} for security threats.
 
@@ -71,6 +85,8 @@ Contract Details:
 
 Blacklisted Addresses: {[addr for addr in blacklist_addresses_set]}
 
+{"Subgraph Data:" + json.dumps(subgraph_data, indent=2) if subgraph_data else "No subgraph data available"}
+
 Follow these steps:
 1. Use get_last_transactions to fetch recent transactions for this contract
 2. For each transaction:
@@ -78,11 +94,15 @@ Follow these steps:
    - Check for suspicious patterns (flash loans, reentrancy, etc.)
    - Analyze value transfers and gas usage
    - Look for known attack vectors
-3. If high-risk threats are found:
+3. If subgraph data is available:
+   - Analyze approval patterns and amounts
+   - Check for suspicious cross-chain burns
+   - Correlate on-chain data with subgraph events
+4. If high-risk threats are found:
    - Call the emergency function using CDP Agentkit
    - Update contract status
-4. Log all findings with appropriate severity levels
-5. Send alert emails to stakeholders using send_alert_email tool
+5. Log all findings with appropriate severity levels
+6. Send alert emails to stakeholders using send_alert_email tool
 
 Take action autonomously if threats are detected. You have access to all necessary tools through CDP Agentkit.
 
@@ -91,7 +111,8 @@ Format your analysis logs with emojis:
 - 🟡 for suspicious but not critical patterns
 - 🔴 for high-risk threats
 - 🚨 for emergency actions taken
-- ⛔ for blacklisted address interactions"""
+- ⛔ for blacklisted address interactions
+- 📊 for subgraph data analysis"""
 
                 # run agent analysis
                 logger.info(f"[autonomous_monitor] Analyzing contract {contract.address}")
