@@ -3,6 +3,7 @@ from flask_cors import CORS
 from dotenv import load_dotenv
 import logging
 import threading
+import os
 from sqlalchemy.orm import Session
 from datetime import datetime
 
@@ -281,5 +282,8 @@ def delete_contract(contract_id):
         return jsonify({"error": "Failed to delete contract"}), 500
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    # get port from environment variable or default to 5000
+    port = int(os.environ.get("PORT", 5000))
+    # run the app binding to 0.0.0.0
+    app.run(host='0.0.0.0', port=port)
     
