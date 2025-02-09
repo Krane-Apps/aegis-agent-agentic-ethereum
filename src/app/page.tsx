@@ -167,11 +167,13 @@ export default function Home() {
             <SignupButton />
             {!address && <LoginButton />}
             <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
-              <DialogTrigger asChild>
-                <Button className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700">
-                  <Plus className="w-4 h-4 mr-2" /> Add Contract
-                </Button>
-              </DialogTrigger>
+              {address && (
+                <DialogTrigger asChild>
+                  <Button className="bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700">
+                    <Plus className="w-4 h-4 mr-2" /> Add Contract
+                  </Button>
+                </DialogTrigger>
+              )}
               <DialogContent className="sm:max-w-[500px] bg-gray-900 border-gray-800 max-h-[90vh] overflow-y-auto">
                 <DialogHeader className="flex flex-row items-center justify-between pr-0">
                   <DialogTitle className="text-xl font-semibold text-white flex items-center gap-3">
