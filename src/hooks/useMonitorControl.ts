@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
+import { API_BASE } from 'src/utils/constants';
 
 interface MonitorStatus {
   running: boolean;
@@ -9,8 +10,6 @@ interface MonitorStatus {
 export function useMonitorControl() {
   const [status, setStatus] = useState<MonitorStatus>({ running: false, thread_alive: false });
   const [loading, setLoading] = useState(false);
-
-  const API_BASE = 'http://127.0.0.1:5000';
 
   const fetchStatus = async () => {
     try {

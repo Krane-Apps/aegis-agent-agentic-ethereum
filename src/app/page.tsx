@@ -109,6 +109,7 @@ export default function Home() {
     alertSettings,
     loading,
     error,
+    isUsingDummyData,
     addContract,
     deleteContract,
     refreshData,
@@ -150,6 +151,19 @@ export default function Home() {
       <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-purple-900/20 to-pink-900/20 pointer-events-none" />
 
       <div className="relative w-full px-8 py-8">
+        {isUsingDummyData && (
+          <div className="mb-6 p-4 bg-yellow-900/50 border border-yellow-600 rounded-lg text-yellow-200 backdrop-blur-sm">
+            <div className="flex items-center gap-2">
+              <AlertTriangle className="w-5 h-5" />
+              <p>
+                <span className="font-semibold">Backend Service Down:</span>{" "}
+                You're currently viewing placeholder data. Please contact the
+                administrator to restart the service.
+              </p>
+            </div>
+          </div>
+        )}
+
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center gap-4">

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { toast } from 'react-toastify';
+import { API_BASE } from 'src/utils/constants';
 
 interface Log {
   id: number;
@@ -14,8 +15,6 @@ export function useContractLogs(contractId?: number) {
   const [logs, setLogs] = useState<Log[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
-  const API_BASE = 'http://127.0.0.1:5000';
 
   const fetchLogs = async () => {
     try {
