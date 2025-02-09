@@ -1,0 +1,14 @@
+flask==3.0.0
+flask-cors==4.0.0
+python-dotenv==1.0.0
+sqlalchemy==2.0.25
+sendgrid==6.10.0
+web3==6.11.3
+langchain==0.1.0
+langchain-openai==0.0.2
+langgraph==0.0.10
+cdp-langchain==0.0.1
+cdp-backend==0.0.1
+requests==2.31.0
+python-jose==3.3.0
+gunicorn==21.2.0 
