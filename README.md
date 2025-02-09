@@ -1,18 +1,18 @@
 # Aegis Agent: AI-Powered Smart Contract Security Monitor
 
-**Critical Value Add**: The average response time in DeFi is **47 hours** – Aegis AI agent cuts this to **<10 minutes**, making it indispensable for protocol security. 
+**Critical Impact**: Projects detecting threats within 1 hour recovered **89%** of funds, while delays beyond 24 hours resulted in only **12%** recovery - highlighting the crucial need for real-time monitoring.
 
-**Important Note**: This AI Agent does not find vulnerabilites in smart contracts but analyses the transactions to find suspicious ones and alerts the user, and can also pause the contract automatically if the user wants to, it uses the **CDP Agent Kit** to do so. 
+**Important Note**: Aegis is a transaction monitoring system, NOT a smart contract auditing tool. It analyzes on-chain transactions in real-time to detect suspicious patterns and automatically responds to threats using **CDP Agent Kit**. While it cannot detect vulnerabilities in smart contract code, it serves as a critical defense layer by monitoring transaction behavior and enabling rapid response through automated alerts and contract pausing.
 
 ---
 
-### **1. Overview**  
+### **Overview**  
 **Problem**: Smart contracts are vulnerable to hacks due to lack of real-time monitoring and delayed threat response.  
 **Solution**: An AI-driven agent that monitors **transactions 24/7**, detects anomalies, and triggers alerts/emergency actions.  
 
 ---
 
-### **2. Why This Wins**  
+### **Why This Wins?**  
 Combines AI's predictive power with blockchain's transparency to create a defense system that evolves with new threats. Targets the $10B+ lost annually to DeFi hacks.  
 
 Here's a curated list of major DeFi hacks with attack vectors, losses, and response times, showing how AI monitoring system could help:
@@ -33,20 +33,6 @@ Here's a curated list of major DeFi hacks with attack vectors, losses, and respo
 | **Mixin Network**        | 2023     | Database Breach              | $200M          | 2 hours            | Ongoing           | Unresolved  |  
 
 
-### **Key Insights**  
-1. **Detection Gap**:  
-   - Average detection time: **18 hours** (excluding outliers)  
-   - Aegis AI agent could reduce this to **<5 minutes** with real-time monitoring.  
-
-2. **Common Attack Patterns**:  
-   - 63% involved reentrancy/flash loans  
-   - 22% leveraged oracle manipulation  
-   - 15% exploited access control flaws  
-
-3. **Response Impact**:  
-   - Projects with <1 hr detection recovered **89%** of funds  
-   - Projects with >24 hr detection recovered **12%**  
-
 ---
 
 ### **How AI System Would Help**  
@@ -57,43 +43,149 @@ Here's a curated list of major DeFi hacks with attack vectors, losses, and respo
 | **Oracle Manipulation**  | Cross-check 5+ price feeds |  
 | **Access Control**       | Monitor admin function calls |  
 | **Signature Flaws**      | Validate contract bytecode changes |  
+  
+---
+
+### **Technical Architecture**
+
+```mermaid
+graph TB
+    %% Main Components
+    UI[Frontend<br/>Next.js + TailwindCSS<br/>Deployed on Vercel]
+    BE[Backend API<br/>Flask + Python 3.11<br/>Deployed on Autonome]
+    AG[AI Agent<br/>CDP Agent Kit + LangChain<br/>GPT-4]
+    DB[(SQLite Database)]
+    
+    %% Blockchain Components
+    subgraph Blockchain [Supported Networks]
+        BM[Base Mainnet]
+        BS[Base Sepolia]
+        style BM fill:#0052FF,color:white
+        style BS fill:#0052FF,color:white
+    end
+    
+    %% Data Sources
+    subgraph DataSources [Data Sources]
+        GR[The Graph Protocol<br/>Subgraphs]
+        BS_API[Base Scan API<br/>Fallback Data]
+    end
+    
+    %% External Services
+    subgraph ExternalServices [External Services]
+        SG[SendGrid<br/>Email Service]
+        Auto[Autonome<br/>AI Hosting]
+        CDP[Coinbase CDP<br/>Agent Kit]
+    end
+    
+    %% Frontend Integrations
+    subgraph FrontendTools [Frontend Integrations]
+        WC[Coinbase Wallet<br/>OnChain Kit]
+        Wagmi[Wagmi/Viem<br/>Web3 Hooks]
+    end
+
+    %% Connections
+    UI -->|User Interface| WC
+    UI -->|API Calls| BE
+    UI -->|Contract Interaction| Wagmi
+    
+    BE -->|Store Data| DB
+    BE -->|Deploy| Auto
+    BE -->|Send Alerts| SG
+    BE -->|Monitor| AG
+    
+    AG -->|Analyze Transactions| GR
+    AG -->|Fallback Data| BS_API
+    AG -->|Smart Contract Interaction| CDP
+    
+    GR -->|Index Events| Blockchain
+    BS_API -->|Query Data| Blockchain
+    
+    %% Styling
+    classDef primary fill:#1a1b26,stroke:#2ac3de,color:white
+    classDef secondary fill:#1a1b26,stroke:#bb9af7,color:white
+    classDef tertiary fill:#1a1b26,stroke:#7aa2f7,color:white
+    
+    class UI,FrontendTools primary
+    class BE,AG,DB secondary
+    class DataSources,ExternalServices tertiary
+```
+
+#### **Component Details**
+
+1. **Frontend Layer**
+   - **Framework**: Next.js 14 with App Router
+   - **Key Components**:
+     - Wallet Connection (Coinbase OnChain Kit)
+     - Real-time LogsViewer
+     - Contract Management Forms
+     - Dashboard Analytics
+   - **Styling**: TailwindCSS with custom dark theme
+   - **State Management**: React Query + Custom Hooks
+
+2. **Backend Services**
+   - **API Server**: Flask with Python 3.11
+   - **Database**: SQLite with SQLAlchemy ORM
+   - **Key Services**:
+     - Autonomous Monitor Service
+     - AI Security Agent
+     - Contract Event Processor
+     - Alert Management System
+
+3. **Blockchain Integration**
+   - **Networks Supported**:
+     - Ethereum Mainnet
+     - Base Mainnet
+     - Base Sepolia
+   - **Tools**:
+     - CDP Agent Kit for contract interaction
+     - The Graph Protocol for event indexing
+     - Base/Etherscan APIs as fallback
+
+4. **External Services**
+   - **Email**: SendGrid for alert notifications
+   - **AI Agent Hosting**: Autonome for agent deployment
+   - **Block Explorers**: Base/Etherscan APIs
+
+#### **Data Flow**
+
+1. **Contract Monitoring**
+   ```mermaid
+   sequenceDiagram
+       participant Contract
+       participant Graph
+       participant Agent
+       participant Email
+       
+       Contract->>Graph: Emit Event
+       Graph->>Agent: Index & Forward
+       Agent->>Agent: Analyze Threat
+       alt High Risk
+           Agent->>Contract: Pause
+           Agent->>Email: Send Alert
+       else Safe
+           Agent->>Graph: Continue Monitoring
+       end
+   ```
+
+2. **Alert System**
+   ```mermaid
+   sequenceDiagram
+       participant Monitor
+       participant Agent
+       participant DB
+       participant Email
+       participant UI
+       
+       Monitor->>Agent: Detect Threat
+       Agent->>DB: Log Threat
+       Agent->>Email: Send Alert
+       Agent->>UI: Update Status
+       UI->>DB: Fetch Logs
+   ```
 
 ---
 
-**Verdict**  
-AI Agent could have:  
-✅ **Prevented 72%** of historical hacks with real-time alerts  
-✅ **Reduced losses** by 83% through faster response  
-✅ **Enabled recovery** in 95% of cases via emergency pausing  
-
----
-
-### **3. Key Features**  
-1. **AI Monitoring Engine**  
-   - Real-time transaction analysis using LLMs + rule-based checks.  
-   - Detects threat patterns (flash loans, reentrancy, oracle manipulation).  
-2. **User Dashboard (Next.js)**  
-   - Configure contracts, thresholds, and alert channels.  
-   - Visualize threats with severity scores and attack timelines.  
-3. **Multi-Chain Support**  
-   - Ethereum, Base, Base Sepolia integration.  
-4. **Alert System**  
-   - Email/SMS/Slack notifications with mitigation recommendations.  
-   - Emergency contract pausing via **CDP Agent Kit**.  
-5. **Threat Library**  
-   - Database of 100+ known attack signatures and malicious addresses.  
-
----
-
-### **4. Technical Architecture**  
-- **Frontend**: Next.js 14 (App Router), Tailwind CSS, Wagmi/Viem.  
-- **Backend**: Flask (Python).  
-- **Blockchain**: CDP Agent Kit, Web3.py.  
-- **AI**: LangChain for threat analysis, GPT-4 for anomaly detection.  
-
----
-
-### **5. Predicted Success Metrics**  
+### **Predicted Success Metrics**  
 - **Detection Accuracy**: >95% true positive rate.  
 - **Latency**: <30 sec from transaction to alert.  
 - **User Experience**: <2 clicks to configure monitoring.  
@@ -101,14 +193,14 @@ AI Agent could have:
 
 ---
 
-### **5. Risks & Mitigation**  
+### **Risks & Mitigation**  
 - **False Positives**: Human-in-the-loop confirmation.  
 - **Scalability**: Rate-limited API calls + caching.  
 - **Chain Reorgs**: 12-block confirmation depth.  
 
 ---
 
-### **7. Future Roadmap**  
+### **Future Roadmap**  
 - MEV protection module  
 - Mobile app with push notifications  
 - On-chain insurance integration  
@@ -162,6 +254,5 @@ npm run dev
 ```
 
 The frontend will be available at `http://localhost:3000` and the backend at `http://localhost:5000`
-
 ---
 
